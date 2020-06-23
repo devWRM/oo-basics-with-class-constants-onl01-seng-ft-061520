@@ -1,4 +1,6 @@
 # Run with:       learn spec/02_shoe_spec.rb
+require "pry"
+
 
 class Shoe
   attr_accessor :color, :size, :material, :condition
@@ -10,10 +12,16 @@ class Shoe
     @brand = brand
 
     BRANDS << brand unless BRANDS.include?(brand)
-    # Below does not work because comparing brands array to single brand
+    # Below does NOT work because comparing brands array to single brand
     #  if BRANDS != brand
     #   BRANDS << brand
     # end
+
+#   Below does NOT work because can't reassign a constant
+#   BRANDS << brand
+#   BRANDS = BRANDS.uniq
+
+# binding.pry
   end
 
   def cobble
@@ -22,3 +30,6 @@ class Shoe
   end
 
 end
+
+
+new_shoe = Shoe.new("Nike")
